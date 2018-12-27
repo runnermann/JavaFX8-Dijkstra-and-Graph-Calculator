@@ -30,13 +30,19 @@ order of operations.
   The calculator performs many operations but not all. 
   
   examples:
+  
   base log exp  : 10 log 4  returns 0.602059991327962
+  
   sqrt root     : sqrt 4    returns 2
+  
   n root x      : 3 root 1728  returns 12
+  
   absolute value: | 5 - 6 |  returns 1
   
   Aditional operations can be added to the operator class. To add an operator it will be added as an enum.
+  
   The enum is self explanatory.
+  
   ie.
   The name of the operator in all caps. The parameters are string name, and the priority. The majority of operators will be a       3. 
   LOG ("log", 3) {
