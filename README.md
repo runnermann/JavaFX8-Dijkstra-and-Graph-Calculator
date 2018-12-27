@@ -22,10 +22,12 @@ order of operations.
   by using a new line to seperate each graph. "y = " is expected before each polynomial. 
   
   for  example
+  
   y = x ^ 2
+  
   y = 2 * x ^ 2 - 3
   
-  The calculator can perform the majority of calculations. 
+  The calculator performs many operations but not all. 
   
   examples:
   base log exp  : 10 log 4  returns 0.602059991327962
