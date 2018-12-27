@@ -39,12 +39,15 @@ order of operations.
   
   absolute value: | 5 - 6 |  returns 1
   
-  Aditional operations can be added to the operator class. To add an operator it will be added as an enum.
+  
+  - Aditional operations can be added to the operator class. 
+      1. To add an operator: Add it as an enum to the Operator class
   
   The enum is self explanatory.
   
   ie.
   The name of the operator in all caps. The parameters are string name, and the priority. The majority of operators will be a       3. 
+  
   LOG ("log", 3) {
 
         // for small roots log1p is closer to truth but using log().
@@ -64,4 +67,6 @@ order of operations.
         }
     }, ...
     If it is a Unary operator, override "isUnaryOperator(true)". There are several examples in the operator class. 
+    
+      2. Add the new operator to the switch in the DijkstraParser.getOperator() method
 
