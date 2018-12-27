@@ -41,12 +41,13 @@ order of operations.
   
   
   - Aditional operations can be added to the operator class. 
-      1. To add an operator: Add it as an enum to the Operator class
+  1. To add an operator: Add it as an enum to the Operator class
   
   The enum is self explanatory.
   
-  ie.
-  The name of the operator in all caps. The parameters are string name, and the priority. The majority of operators will be a       3. 
+  
+  The name of the operator is in all caps. The parameters are string name, and int priority. 
+  The majority of operators will be a 3. 
   
     LOG ("log", 3) {
 
@@ -76,5 +77,5 @@ order of operations.
     
     
     
-     2. Add the new operator to the switch in the DijkstraParser.getOperator() method
+   2. Also, add the new operator to the switch in the DijkstraParser.getOperator() method
 
