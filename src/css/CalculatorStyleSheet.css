@@ -1,0 +1,222 @@
+/*
+    Created on : Dec 26, 2016, 12:16:57 PM
+    Author     : humanfriendlyfolder
+
+*/
+/*
+#graph_settings_border {
+    -fx-border-radius: 3 3 3 3;
+    -fx-background-radius: 3 3 3 3;
+    -fx-color: FM_SETTINGS_COLOR;
+    -fx-faint-focus-color: FM_SETTINGS_FAINT;
+    -fx-control-inner-background: FM_SETTINGS_BCKGND;
+    -fx-shadow-highlight-color: ladder(
+            -fx-background,
+            rgba(46,134,193,0.07) 0%,
+            rgba(46,134,193,0.07) 20%,
+            rgba(46,134,193,0.07) 70%,
+            rgba(46,134,193,0.7) 90%,
+            rgba(46,134,193,0.75) 100%
+    );
+    -fx-outer-border: derive(-fx-color,-23%);
+
+    -fx-inner-border: ladder(
+            -fx-background,
+            rgba(46,134,193,0.3) 0%,
+            rgba(46,134,193,0.2) 40%,
+            rgba(46,134,193,0.25) 60%,
+            rgba(46,134,193,0.55) 80%,
+            rgba(46,134,193,0.55) 90%,
+            rgba(46,134,193,0.75) 100%),
+
+    ladder(
+            -fx-background,
+            rgba(46,134,193,0.2) 0%,
+            rgba(46,134,193,0.1) 20%,
+            rgba(46,134,193,0.5) 40%,
+            rgba(46,134,193, 1) 60%,
+            rgba(46,134,193, 1) 100%
+    );
+
+    -fx-border-color: -fx-color, -fx-inner-border, -fx-body-color, -fx-faint-focus-color, -fx-color;
+}
+*/
+
+/* FONTS */
+@font-face{
+
+    font-family: 'Raleway-Medium';
+    src: url("/resources/Roboto-Medium.ttf");
+}
+
+@font-face{
+    font-family: 'Raleway';
+    src: url("/resources/Roboto-Regular.ttf");
+}
+
+.label {
+    -fx-font-family: "Raleway-Medium.ttf";
+}
+
+.text {
+    -fx-font-family: "Raleway-Medium.ttf";
+}
+
+.text-area {
+    -fx-font-family: "Raleway-Medium.ttf";
+}
+
+.text-field {
+    -fx-font-family: "Raleway-Medium.ttf";
+}
+
+.button {
+    -fx-text-fill: #393E46;
+    -fx-font-family: "Raleway-Medium.ttf";
+}
+
+#menuPane {
+    -fx-background-color: #393E46;
+}
+
+#firstPane {
+    -fx-background-color: #DFDCE3;
+}
+
+#modePane {
+    -fx-background-color: #393E46;
+}
+
+/* the CreateFlash cfpNorthPanel where the label is placed */
+#cfpNorthPane {
+    -fx-background-color: #3498db;
+}
+
+#graphTextField {
+    -fx-background-color: #256C9B;
+}
+
+
+/* h1 the FlashMonkey Label */
+#fmLabel {
+    -fx-font-size: 20px;
+    -fx-base: FLASH_PURPLE;
+    /*-fx-text-fill: FM_TEXT_LABEL; */
+    -fx-text-fill: derive(-fx-base,86%);
+}
+
+/* h2labels */
+#h2Label {
+    -fx-font-size: 16px;
+    -fx-base: FLASH_PURPLE;
+    /*-fx-text-fill: FM_TEXT_LABEL; */
+    -fx-text-fill: derive(-fx-base,86%);
+    /*-fx-text-fill: #F8B500;  // yellow */
+    /*-fx-text-fill: #8146B6; */
+}
+
+
+/* the CreateFlash label */
+#cfLabel {
+    -fx-font-size: 12px;
+    -fx-font-family: "Raleway-Medium.ttf";
+    -fx-text-fill: #ecf0f1;
+}
+
+/* The createFlash MasterPane */
+#cfMasterPane {
+    /*-fx-background-color: #FFF4E0; */
+    -fx-background-color: #2980b9;
+    -fx-padding: 2 2 2 2;
+}
+
+#message {
+    -fx-pading: 20, 20,20,20;
+    -fx-border-insets: 20px;
+    -fx-background-insets: 20px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #FF5400;
+    -fx-wrap-text: true;
+}
+
+#mainGridPane {
+    -fx-background-color: #393E46;
+    -fx-vgap: 20;
+}
+
+#graphNumber {
+    -fx-text-fill: WHITE;
+    -fx-font-family: "Raleway-Medium.ttf";
+    -fx-font-size: 9;
+}
+
+.cfpCenter {
+    -fx-font-size: 15px;
+    -fx-font-family: "Raleway";
+}
+
+.text{
+    -tx-font-family: "Raleway-Medium.ttf";
+}
+
+#roundCorners {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+
+
+
+
+
+/* ******* BUTTONS ******* */
+
+
+/* deleteMMBtn & deleteTCellBtn */
+#clrBtn {
+    /*-fx-background: -fx-base; /* window background */
+    /*-fx-background-color: transparent;*/
+
+    -fx-background-color: rgba(236,236,236,0.75);
+    -fx-background-radius: 15, 15, 15, 15;
+    -fx-background-insets: 0, 0;
+    -fx-border-radius: 15 15 15 15;
+
+    -fx-border-width: 1;
+    /*-fx-border-color: ladder(-fx-base, derive(-fx-base, -25%), derive(-fx-base, -15%), derive(-fx-base, 7%));*/
+    -fx-border-color: -fx-inner-border, -fx-outer-border;
+}
+
+
+#clrBtn:hover {
+    -fx-background-color: rgba(247,247,247,0.85);
+}
+
+
+#clearButton {
+    /* -fx-background-color: #0C73C5; */
+    -fx-border-radius: 0 3 3 0;
+    -fx-background-radius: 0 3 3 0;
+    -fx-border-width: 1;
+    -fx-border-color: #0E89EC; /* Focus blue is .. 0096C9 */
+}
+
+
+.VBox {
+    -fx-padding: 2, 2, 2, 2;
+}
+
+.text-area {
+
+    -fx-background-insets: 2;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-background-radius: 0, 0, 0, 0;
+
+    -fx-border-width: -1;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+
