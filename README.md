@@ -48,25 +48,33 @@ order of operations.
   ie.
   The name of the operator in all caps. The parameters are string name, and the priority. The majority of operators will be a       3. 
   
-  LOG ("log", 3) {
+    LOG ("log", 3) {
 
-        // for small roots log1p is closer to truth but using log().
+          // for small roots log1p is closer to truth but using log().
 
-        @Override
-        public double execute(ExpNode expNode, double base, double exponent) {
+          @Override
+          public double execute(ExpNode expNode, double base, double exponent) {
 
-            double result;
-            //System.out.println(" *** Called LOG.execute() ***");
+              double result;
+              //System.out.println(" *** Called LOG.execute() ***");
 
-            result = Math.log(exponent) / Math.log(base);
+              result = Math.log(exponent) / Math.log(base);
 
-            expNode.setExpSolved("LOG: " + this.getSymbol() + " base " + base + " log exp: " + exponent + " = " + result);
-            ansComponents.offer(expNode);
+              expNode.setExpSolved("LOG: " + this.getSymbol() + " base " + base + " log exp: " + exponent + " = " + result);
+              ansComponents.offer(expNode);
 
-            return result;
-        }
-    }, ...
-    If it is a Unary operator, override "isUnaryOperator(true)". There are several examples in the operator class. 
+              return result;
+          }
+      }, ...
     
-      2. Add the new operator to the switch in the DijkstraParser.getOperator() method
+      // If it is a Unary operator override the isUnaryOperator method and set it to true.
+      
+        @Override
+          public boolean isUnaryOp() {
+              return true;
+          }
+    
+    
+    
+     2. Add the new operator to the switch in the DijkstraParser.getOperator() method
 
