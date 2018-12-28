@@ -10,7 +10,7 @@ order of operations.
   example of how variables are handled are provided by the graphing calculator.
   
   Currently the parser is looking for whitespace to seperate numbers from expressions and paranthesis. Large polynomials need
-  to be devided by paranthesis similar to the TI-84, the expression:
+  to be devided by paranthesis, the expression:
   
   9 * 3^2 - 2 -( 3^2 + (5 + 1) / 3(5 - 3)^2
   
@@ -40,13 +40,14 @@ order of operations.
   absolute value: | 5 - 6 |  returns 1
   
   
-  - Aditional operations can be added to the operator class. 
-  1. To add an operator: Add it as an enum to the Operator class
+  - Aditional operations can be added to the operator class. To add an operator:
+  
+  1. Add the operator as an enum in the Operator class.
   
   The enum is self explanatory.
   
   
-  The name of the operator is in all caps. The parameters are string name, and int priority. 
+  As standard convention, the name of the operator is in all caps. The parameters are: String name, and int priority. 
   The majority of operators will be a 3. 
   
     LOG ("log", 3) {
@@ -57,10 +58,9 @@ order of operations.
           public double execute(ExpNode expNode, double base, double exponent) {
 
               double result;
-              //System.out.println(" *** Called LOG.execute() ***");
-
               result = Math.log(exponent) / Math.log(base);
-
+              
+              // For display to user
               expNode.setExpSolved("LOG: " + this.getSymbol() + " base " + base + " log exp: " + exponent + " = " + result);
               ansComponents.offer(expNode);
 
