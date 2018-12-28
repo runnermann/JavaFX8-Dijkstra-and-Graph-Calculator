@@ -78,4 +78,14 @@ order of operations.
     
     
    2. Also, add the new operator to the switch in the DijkstraParser.getOperator() method
+   
+   
+   
+   
+   LICENSE & COPYRIGHT:
+   
+   This project is Copyrighted by it's author Lowell Stadelman.
+   It is free to use, and distribute as needed. It is licensed under the GNU General Public License v3.0.
+   Future versions will include works from others under the GNU General Public License V2.0. 
+   Please include all copyright information from this author and from any others. 
 
