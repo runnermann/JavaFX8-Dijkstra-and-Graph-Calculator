@@ -37,7 +37,7 @@ order of operations.
   
   n root x      : 3 root 1728  returns 12
   
-  absolute value: | 5 - 6 |  returns 1
+  absolute value: | 5 - 6 |  returns -1
   
   
   - Aditional operations can be added to the operator class. To add an operator:
