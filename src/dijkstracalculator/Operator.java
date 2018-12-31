@@ -78,7 +78,6 @@ public enum Operator implements OperatorInterface {
         @Override
         public double execute(ExpNode exp, double root, double x) {
 
-            //System.out.println("\n*~*~* in Root *~*~*");
             if(x < 0) {
                 return 0;
             }
@@ -104,14 +103,9 @@ public enum Operator implements OperatorInterface {
 
                     // @todo need to do something with negitive roots
 
-                    //System.out.println(" x: " + x + " and root: " + root);
-                    //System.out.println("Root: " +  (-1 / root));
-                    //System.out.println("Solution: " + Math.pow(x ,  (-1 / root)));
-
                     double ans = StrictMath.pow(x, (1 / root));
                     double ansCeil = Math.ceil(ans);
 
-                    //System.out.println("ansCiel: " + ansCeil + " - ciel: " + ans + " = " + (ansCeil - ans));
 
                     if ( (root > 2 && (ansCeil - ans < .00000001)) || (root < -1 && (ansCeil - ans > .09)) ){
 
@@ -130,15 +124,12 @@ public enum Operator implements OperatorInterface {
     SQRT ("sqrt", 3) {
         @Override
         public double execute(ExpNode exp, double x, double notUsed) {
-            // ROOT from SQRT is the reverse of other operators
-            //return ROOT.execute(exp, root, x);
 
             if(x < 0) {
                 return 0;
             }
 
             exp.setExpSolved("SQRT: " + this.getSymbol() + " " + x + " = " + StrictMath.sqrt(x));
-            //System.out.println("exp: " + exp);
             ansComponents.offer(exp);
             return Math.sqrt(x);
         }
@@ -156,7 +147,6 @@ public enum Operator implements OperatorInterface {
         public double execute(ExpNode expNode, double base, double exponent) {
 
             double result;
-            //System.out.println(" *** Called LOG.execute() ***");
 
             result = Math.log(exponent) / Math.log(base);
 
@@ -171,8 +161,6 @@ public enum Operator implements OperatorInterface {
         @Override
         public double execute(ExpNode exp, double x, double notUsed) {
 
-            //System.out.println(" *** Called ABS.execute() ***");
-            //System.out.println("\t x is: " + x);
             exp.setExpSolved("ABS: " + this.getSymbol() + " " + x + " = " + Math.abs(x));
             ansComponents.offer(exp);
 
@@ -189,9 +177,6 @@ public enum Operator implements OperatorInterface {
         public double execute(ExpNode exp, double notUsed, double notUsedEither) {
 
             System.err.println(" *** Called DEFAULT.execute() ***");
-            //System.out.println("\t x is: " + x);
-            //exp.setExpSolved("ABS: " + this.getSymbol() + " " + x + " = " + Math.abs(x));
-            //ansComponents.offer(exp);
 
             return 0;
         }

@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -22,7 +23,7 @@ import dijkstracalculator.*;
 /**
  * - To add additional operators to this class's capabilities,
  * add them in the appropriate class, or the Operator class.
- *  Add them as an enum. Include it's type in the getOperator() switch.
+ *  Add them as an enum. Include it's type in the getOperator() switch in DijkstraParser.
  */
 public class GraphCard extends MathCard {
 
@@ -33,7 +34,7 @@ public class GraphCard extends MathCard {
     private int graphYHigh;
     private Graph cardGraph;
     private DijkstraParser parser;
-    private Editor upperEditor;
+
 
 
     /** METHODS **/
@@ -59,7 +60,6 @@ public class GraphCard extends MathCard {
 
         parser = new DijkstraParser();
         cardGraph = new Graph(centerX, centerY);
-        upperEditor = new Editor();
     }
 
     /***  SETTERS ***/
@@ -98,27 +98,28 @@ public class GraphCard extends MathCard {
     public void reset() {
 
         graphPane.getChildren().clear();
-        graphPane.getChildren().add(cardGraph.createXYAxis(Color.BLACK, SceneCntl.getWd(), 200));
-        graphPane.getChildren().add( cardGraph.createGrid(Color.web(UIColors.GRAPH_BGND), SceneCntl.getWd(), 200 ));
+        graphPane.getChildren().add(cardGraph.createXYAxis(Color.BLACK, 300, 200));
+        graphPane.getChildren().add( cardGraph.createGrid(Color.web(UIColors.GRAPH_BGND), 300, 200 ));
         cardGraph.axisNums(graphPane, SceneCntl.getWd(), 200);
     }
 
 
-    //@Override
-    public VBox getTEditorPane( Editor p, Editor r) {
+    @Override
+    public VBox getCalcPane() {
 
-        VBox vBox = super.getTEditorPane( p, r);
+        VBox vBox = super.getCalcPane();
         vBox.setSpacing(2);
 
         init();
 
-        upperEditor = p;
-        p.setPrompt("Enter Math Formula, quiz entries go into textFields, Graph will be displayed " +
-                "in testing. ");
+        expressionTArea.setPromptText("Enter Math Formulas as \"y = ...\". Each graph starts with a new line." +
+                "\n example:" +
+                "\n y = x ^ 2 " +
+                "\n y = 2 * x ^ 2 - 2");
+
         FlowPane flow = new FlowPane();
-        //graphPane.setMaxHeight(200);
-        graphPane.getChildren().add(cardGraph.createXYAxis(Color.BLACK, SceneCntl.getWd(), 200));
-        graphPane.getChildren().add( cardGraph.createGrid(Color.web(UIColors.GRID_GREY), SceneCntl.getWd(), 200));
+        graphPane.getChildren().add(cardGraph.createXYAxis(Color.BLACK, 300, 200));
+        graphPane.getChildren().add( cardGraph.createGrid(Color.web(UIColors.GRID_GREY), 300, 200));
         cardGraph.axisNums(graphPane, SceneCntl.getWd(), 200);
         graphPane.setOnMouseClicked((e) -> graphClickAction());
 
@@ -136,7 +137,7 @@ public class GraphCard extends MathCard {
 
     private HBox userSettingsBox() {
 
-        HBox box = new HBox(4);
+        HBox box = new HBox(2);
         TextField xLow = new TextField();
         xLow.setPrefColumnCount(4);
 
@@ -303,7 +304,7 @@ public class GraphCard extends MathCard {
             StringBuilder sb = new StringBuilder();
             sb.append(expression);
             sb.append("\n\n " + parser.getErrorMessage());
-            upperEditor.setText(sb.toString());
+            expressionTArea.setText(sb.toString());
 
             return 0;
 
@@ -402,7 +403,9 @@ public class GraphCard extends MathCard {
      * @param expression
      */
     @Override
-    public void calcButtonAction(String expression, Editor p) {
+    public void calcButtonAction(String expression, TextArea textArea) {
+
+        System.out.println("calcButtonAction in GraphCard");
 
         reset();
         String[] exps = splitExps(expression);

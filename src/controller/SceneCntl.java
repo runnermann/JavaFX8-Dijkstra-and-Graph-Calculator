@@ -10,16 +10,12 @@ package controller;
  */
 public class SceneCntl 
 {
-    // iPhone 6? screen dimensions
-    //private static int ht = 440;
-    // Larger screen for mathCard
     private static int ht = 510;
-    private static int wd = 300;
+    private static int wd = 500;
     private static int cellHt = 150;
     private static int dblCellWd = 100;
     private static int buttonWidth = 200;
 
-    
     /**
      * Constructor
      * @param wd width of the scene

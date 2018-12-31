@@ -17,7 +17,7 @@ public class Graph {
 
 
     /**
-     * Full constructor. Sets the center of the pane
+     * Full constructor. Set the center of the pane
      * @param centX
      * @param centY
      */
@@ -25,7 +25,6 @@ public class Graph {
 
         this.centerX = centX;
         this.centerY = centY;
-        //this.djParser = new DijkstraParser();
     }
 
     /**
@@ -87,8 +86,6 @@ public class Graph {
      */
     public Pane createGrid( Color colr, double wd, double ht) {
 
-        System.err.println("*!*!*!* called createGrid() *!*!*!*");
-
         Pane pane = new Pane();
         countX = 0;
         countY = 0;
@@ -117,6 +114,12 @@ public class Graph {
         return pane;
     }
 
+    /**
+     * Creates the numbers along the x & y axis
+     * @param pane
+     * @param wd
+     * @param ht
+     */
     public void axisNums(Pane pane, double wd, double ht) {
 
         double zeroY = centerY;

@@ -1,14 +1,15 @@
-package sample;
+package Main;
 
 import controller.SceneCntl;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import view.Editor;
 import view.GraphCard;
 import view.MathCard;
 
@@ -25,6 +26,7 @@ public class Main extends Application {
         Button graphButton = new Button("Graph");
         HBox btnHBox = new HBox();
         btnHBox.setAlignment(Pos.CENTER);
+        btnHBox.setPadding(new Insets(2, 2, 2, 2));
         btnHBox.getChildren().setAll(calcButton, graphButton);
 
         BorderPane bPane = new BorderPane();
@@ -32,20 +34,21 @@ public class Main extends Application {
 
         MathCard mathCard = new MathCard();
         GraphCard graphCard = new GraphCard();
-        Editor u = new Editor(); // upper editor
-        Editor l = new Editor(); // lower editor
-        bPane.setCenter(mathCard.getTEditorPane(u, l));
+
+        Pane calcPane = new Pane();
+        calcPane.getChildren().add(mathCard.getCalcPane());
+        bPane.setCenter(calcPane);
 
         calcButton.setOnAction(event -> {
-            u.tCell.getTextArea().setText("");
-            bPane.setCenter(mathCard.getTEditorPane(u, l));
+
+            calcPane.getChildren().clear();
+            calcPane.getChildren().add(mathCard.getCalcPane());
 
         });
 
         graphButton.setOnAction(event -> {
-            u.tCell.getTextArea().setText("");
-            bPane.setCenter(graphCard.getTEditorPane(u, l));
-
+            calcPane.getChildren().clear();
+            calcPane.getChildren().add(graphCard.getCalcPane());
         });
 
 
