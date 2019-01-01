@@ -1,5 +1,7 @@
 # JavaFX8-Dijkstra-and-Graph-Calculator
 
+click the image below for a demo on youtube. You will have to return to this page after the video.
+
 [![Demo Video](./calculator_unsolved.png)](https://youtu.be/mw4iMDV1vAs) 
 ![Picture](./calculator_solved.png)
 ![Picture](./graph_calculator.png)
