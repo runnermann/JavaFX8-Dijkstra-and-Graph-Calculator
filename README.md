@@ -1,6 +1,6 @@
 # JavaFX8-Dijkstra-and-Graph-Calculator
 
-[![Demo Video](./calculator_unsolved.png)](./calc-n-graph-demo.mov) 
+[![Demo Video](./calculator_unsolved.png)](https://youtu.be/mw4iMDV1vAs) 
 ![Picture](./calculator_solved.png)
 ![Picture](./graph_calculator.png)
 
