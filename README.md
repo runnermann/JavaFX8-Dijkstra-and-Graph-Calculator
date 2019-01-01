@@ -18,7 +18,7 @@ order of operations.
   example of how variables are handled are provided by the graphing calculator.
   
   Currently the parser is looking for whitespace to seperate numbers from expressions and paranthesis. Large polynomials need
-  to be devided by paranthesis, the expression:
+  to be divided by paranthesis. The expression:
   
   9 * 3^2 - 2 -( 3^2 + (5 + 1) / 3(5 - 3)^2
   
@@ -29,7 +29,7 @@ order of operations.
   The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multiple graphs may be drawn drawn simultainiously
   by using a new line to seperate each graph. "y = " is expected before each polynomial. 
   
-  for  example
+  for example:
   
   y = x ^ 2
   
