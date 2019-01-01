@@ -11,8 +11,8 @@ package controller;
 public class SceneCntl 
 {
     private static int ht = 510;
-    private static int wd = 500;
-    private static int cellHt = 150;
+    private static int wd = 540;
+    private static int cellHt = 60;
     private static int dblCellWd = 100;
     private static int buttonWidth = 200;
 

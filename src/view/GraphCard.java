@@ -123,7 +123,9 @@ public class GraphCard extends MathCard {
         cardGraph.axisNums(graphPane, SceneCntl.getWd(), 200);
         graphPane.setOnMouseClicked((e) -> graphClickAction());
 
-        flow.getChildren().addAll(graphPane, userSettingsBox());
+        //flow.getChildren().addAll(graphPane, userSettingsBox());
+        flow.getChildren().add(0, graphPane);
+        flow.getChildren().add(1, userSettingsBox());
 
         flow.setMaxHeight(226);
         flow.setVgap(4);

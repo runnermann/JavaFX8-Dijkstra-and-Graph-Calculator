@@ -40,8 +40,6 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     protected DijkstraParser parser;// = new DijkstraParser();
 
     /** Panes **/
-    // Contains the entire card
-    protected GridPane gPane;// vBox;
     // Contains the upper Section
     private HBox upperHBox;
     // contains the lower Section
@@ -50,7 +48,6 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     private Pane pane;
 
     HBox masterHBox;//
-    HBox box;
     TextArea  expressionTArea;
     TextField ansField;
     // The Mathmatical expression from/for the question
@@ -75,8 +72,12 @@ public class MathCard {//implements GenericAnswer<MathCard> {
         ansField = new TextField();
         upperHBox = new HBox();
         upperHBox.setPrefSize(SceneCntl.getWd(), 60);
-        //lowerVBox = getAnswerBox();
+        //upperHBox.setMaxHeight(60);
+        // upperHBox.setMinHeight(60);
+        upperHBox.setPadding(new Insets(2, 8, 2, 8));
         pane = new Pane();
+        pane.setMaxHeight(SceneCntl.getCellHt());
+        pane.setMinHeight(SceneCntl.getCellHt());
     }
 
 
@@ -88,13 +89,12 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     public VBox getCalcPane()
     {
         // Instantiate vBox and "set spacing"
-
         VBox vBox = new VBox(2);
-        //StackPane sPane = new StackPane();
 
         // Set prompt in Question/upperBox
         expressionTArea.clear();
         expressionTArea.setPromptText("Enter Math Formula");
+        expressionTArea.setPrefWidth(SceneCntl.getWd());
         upperHBox.getChildren().clear();
         upperHBox.getChildren().add(expressionTArea);
 
@@ -104,10 +104,10 @@ public class MathCard {//implements GenericAnswer<MathCard> {
             calcButtonAction(expression, expressionTArea);
         });
 
-        //lowerVBox.getChildren().clear();
         pane.getChildren().clear();
         pane.getChildren().add(upperHBox);
         lowerVBox = getAnswerBox();
+        lowerVBox.setPadding(new Insets(2, 8, 2, 8));
         vBox.getChildren().addAll(pane, lowerVBox);
         return vBox;
     }
@@ -137,7 +137,7 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     private HBox expHBox = new HBox();
     private int prevIdx = 0;
     private Circle circle = new Circle(9);
-    private Rectangle rect = new Rectangle(18 , 22);
+    //private Rectangle rect = new Rectangle(18 , 22);
     private ArrayList<TextField> txtFldAry;
     /**
      * Provides the interactive step by step evaluation of the
@@ -159,15 +159,20 @@ public class MathCard {//implements GenericAnswer<MathCard> {
             ExpNode exp = Operator.getAnsComponents().poll();
 
             TextField textField = new TextField(exp.getExpSolved());
+            textField.setPadding(new Insets(6));
+            // Action on mouse entered
             textField.setOnMouseEntered(e -> {
 
                 textField.setStyle("-fx-border-color:" + UIColors.HIGHLIGHT_PINK);
+                // prevent textField in scrollPane from causing jitter bc of expansion
+                textField.setPadding(new Insets(5));//Height(8);
                 setIActiveCircle(exp.getIndex());
                 prevIdx = exp.getIndex();
 
             });
             textField.setOnMouseExited(e -> {
                 mouseExitedExpBox();
+                textField.setPadding(new Insets(6));//Height(8);
                 textField.setStyle("-fx-border-color: default");
             });
             vBox.getChildren().add(textField);
@@ -186,18 +191,17 @@ public class MathCard {//implements GenericAnswer<MathCard> {
      */
     private VBox getAnswerBox() {
 
-        VBox box = new VBox(2);
+        HBox box = new HBox(2);
         ansField = new TextField();
         ansField.setPromptText("pres calc for answer");
         ansField.setEditable(false);
         ansField.setPrefColumnCount(10);
         box.getChildren().addAll( calcButton, ansField);
-        box.setPadding(new Insets(4,0,4, 0));
         box.setAlignment(Pos.CENTER);
         VBox vB = new VBox(2);
         vB.getChildren().add(box);
 
-        return box;
+        return vB;
     }
 
 
@@ -219,21 +223,19 @@ public class MathCard {//implements GenericAnswer<MathCard> {
         circle.setFill(Color.TRANSPARENT);
         circle.setStroke(Color.web(UIColors.HIGHLIGHT_PINK));
         circle.setStrokeWidth(1.6);
-        rect.setFill(Color.TRANSPARENT);
+
 
         TextField textField = txtFldAry.get(expIdx);
         // circle centerX and centerY
         double x = textField.getLayoutX() + (textField.getWidth() / 2);
         double y = textField.getLayoutY() + (textField.getHeight() / 2);
-        circle.setCenterX(x);
-        circle.setCenterY(y);
-
-        System.out.println("Circle center is x & y " + circle.getCenterX() + " " + circle.getCenterY() );
+        circle.setCenterX(x + 8);
+        circle.setCenterY(y + 2);
 
         pane.getChildren().add(circle);
         // make the interactive question with transparent boxes.
         textField.setStyle("-fx-stroke-width: 0; -fx-stroke: TRANSPARENT; -fx-background-color: TRANSPARENT;");
-        textField.setPrefHeight(20);
+
     }
 
     private void mouseExitedExpBox() {
@@ -252,18 +254,21 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     private HBox interActiveQuestion(ArrayList expList) {
 
         expHBox = new HBox();
-        expHBox.setPrefHeight(20);
+        expHBox.setMaxHeight(20);
+        expHBox.setMinHeight(20);
         txtFldAry = new ArrayList<>(10);
-
+        TextField tf;
         int length;
         for(int i = 0; i < expList.size(); i++) {
 
             length = expList.get(i).toString().length();
-            TextField tf = new TextField(expList.get(i).toString());
-
+            tf = new TextField(expList.get(i).toString());
+            tf.setMinHeight(14);
+            tf.setMaxHeight(14);
             tf.setMaxWidth(length * 9);
             tf.setMinWidth(length * 9);
             tf.setStyle("-fx-stroke-width: 0; -fx-stroke: TRANSPARENT; -fx-background-color: TRANSPARENT;");
+            // Important !!!
             tf.setPadding(Insets.EMPTY);
             tf.alignmentProperty().setValue(Pos.CENTER);
 
@@ -278,8 +283,8 @@ public class MathCard {//implements GenericAnswer<MathCard> {
     // TESTING the input
 
     /**
-     * Calculates the expression. If there is invalid input, alerts the use to the
-     * problem.
+     * Calculates the expression. If there is invalid input, posts an error message in
+     * the ansField.
      * @param expression
      * @param textArea
      */
@@ -304,6 +309,14 @@ public class MathCard {//implements GenericAnswer<MathCard> {
         System.out.println("Results: " + parser.getResult());
     }
 
+    /**
+     * Verifies input, If not displays an error message in the input TextArea for a
+     * few seconds then returns to the original input.
+     * @param parser
+     * @param expression
+     * @param ta
+     * @return
+     */
     protected boolean inputHandler(DijkstraParser parser, String expression, TextArea ta) {
 
         if(parser.isInvalidInput())
