@@ -1,6 +1,9 @@
 # JavaFX8-Dijkstra-and-Graph-Calculator
 
+[![Demo Video](./calculator_unsolved.png)](./calc-n-graph-demo.mov) 
 ![Picture](./calculator_solved.png)
+![Picture](./graph_calculator.png)
+
 
 - This calculator is an interactive calculator that uses Edgsar Dijkstra's Shunting Yard algorithm to ensure correct 
 order of operations. 
