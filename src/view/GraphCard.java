@@ -317,43 +317,60 @@ public class GraphCard extends MathCard {
     }
 
     /**
-     * Helper to evaluate
-     * Parses the expression and adds a value for x
+     * A Graph Specific method. Replaces DijkstraParser.parseIntoRPN()
+     * This method parses the expression into sub-expressions and replaces the value for x
+     * with the value in arguement "x".
      * @param express The string expression
-     * @param x
-     * @return
+     * @param x the value for "x"
+     * @return returns an ArrayList of elements
      */
-    private ArrayList parse(String express, double x) throws Exception {
+    private ArrayList parse(String express, double x) throws Exception{
 
+        // Remove "y =" from the expression
         String expMinus = express.substring(3);
-        expMinus = expMinus.trim();
+        expMinus = expMinus.trim(); // clean whitespace from start
         String element;
         String[] elements = expMinus.split(" ");
         ArrayList subExpList = new ArrayList(10);
         String strX = "";
         String strY = "";
 
+        // Evaluate each sub-element and determine if it's an "x", an
+        // operator, or a double.
         for(int i = 0; i < elements.length; i++) {
-
             element = elements[i];
-
+            // Expression length,
+            // used to determine if number or op
             int length = element.length();
             char c;
 
+            //System.out.println("parsing string, element is: " + element);
+
+            // classify the element as a number or operator
+            // and add it to the subExpList.
+
+            // Check 2nd from last char in case it's a negative decimal
             if (length > 1) {
-                c = element.charAt(1);
+                c = element.charAt(length - 1);
             } else {
                 c = element.charAt(0);
             }
+
+            // Classify, seperate, and add to subExpList
             if (Character.isDigit(c)) {
                 double num = Double.parseDouble(element);
                 subExpList.add(num);
+
+                //System.out.println("adding num to arrayList: " + num);
 
             } else if (c == 'x') {
 
                 if (element.charAt(0) == '-') {
                     subExpList.add(-x);
+                    //System.out.println(" adding -num to arrayList " + -x);
                 } else {
+
+                    //System.out.println(" replacing x with: " + x);
                     subExpList.add(x);
                 }
 
@@ -368,24 +385,27 @@ public class GraphCard extends MathCard {
                         throw new EmptyStackException();
                     }
                 }
-                if(operator.isUnaryOp()) {
 
+                if(operator.isUnaryOp()) { // sqrt, abs,
 
+                    // for printing values prior to execution
                     strX = elements[i + 1];
-
-                } else if(i > 1 && i < elements.length - 1) {
-
+                }
+                else if(i > 1 && i < elements.length - 1) {
+                    // for printing values prior to execution
                     strX = elements[i - 1];
                     strY = elements[i + 1];
-
                 } else {
                     if (operator.getPriority() != 0) {
 //                        throw new EmptyStackException();
                     }
                 }
 
+                // for display when answered incorrectly
                 String strOrigSubExp = parser.getStrExpr(strX, strY, operator);
                 ExpNode exp = new ExpNode(operator, strOrigSubExp, i);
+
+                // add the expression to the sub-expession list
                 subExpList.add(exp);
             }
         }
