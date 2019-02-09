@@ -8,7 +8,7 @@ Click the image above for a demo on youtube. You will have to return to this pag
 ![Picture](./graph_calculator.png)
 
 
-- This calculator is an interactive calculator that uses Edgsar Dijkstra's Shunting Yard algorithm to ensure correct 
+- This is an interactive calculator that uses Edgsar Dijkstra's Shunting Yard algorithm to ensure correct 
 order of operations. 
 - After entering the expression in the main field of the calculator, and pressing calc: 
   - The answer will show in the answer field.
@@ -26,7 +26,7 @@ order of operations.
   
   { 9 * 3 ^ 2 - 2 -{ 3 ^ 2 + ( 5 + 1 ) } } / ( 3 ( 5 - 3 ) ^ 2 )
   
-  The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multiple graphs may be drawn drawn simultainiously
+  The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multiple graphs may be drawn simultainiously
   by using a new line to seperate each graph. "y = " is expected before each polynomial. 
   
   for example:
@@ -45,7 +45,7 @@ order of operations.
   
   n root x      : 3 root 1728  returns 12
   
-  absolute value: | 5 - 6 |  returns -1
+  absolute value: | 5 - 6 |  returns 1
   
   
   - Aditional operations can be added to the operator class. To add an operator:
