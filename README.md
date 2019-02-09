@@ -7,8 +7,10 @@ Click the image above for a demo on youtube. You will have to return to this pag
 ![Picture](./calculator_solved.png)
 ![Picture](./graph_calculator.png)
 
+// @todo integrate effecient math formating system that changes the math format as the user types. Currently investigating the // jlatexmathFX library as a possiblity, however the jlatexmathFX library has a high performance cost. 
 
-- This is an interactive calculator that uses Edgsar Dijkstra's Shunting Yard algorithm to ensure correct 
+- This calculator is a simplified version from a recent project. It provides feedback to the user to help them with understanding where they've made errors in hand calculations of polynomials. After the polynomial is entered into the "problem" text-field the user then enters the correct answer into the "answer" field. If the user has entered an incorrect answer, they can check their calculations for the common errors such as calculations with the operator sequence or failing to change or carry the signs.  
+- This calculator uses Edgsar Dijkstra's Shunting Yard algorithm to ensure correct 
 order of operations. 
 - After entering the expression in the main field of the calculator, and pressing calc: 
   - The answer will show in the answer field.
@@ -26,7 +28,11 @@ order of operations.
   
   { 9 * 3 ^ 2 - 2 -{ 3 ^ 2 + ( 5 + 1 ) } } / ( 3 ( 5 - 3 ) ^ 2 )
   
-  The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multiple graphs may be drawn simultainiously
+  The parser can be modified so that the user does not have to insert whitespace between coeficients and operators. However there is a performance hit for those operations. Admitadly the performance hit might not be significant if implemented correctly and would make the polynomial easier to write. 
+
+
+
+The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multiple graphs may be drawn simultainiously
   by using a new line to seperate each graph. "y = " is expected before each polynomial. 
   
   for example:
