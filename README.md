@@ -102,4 +102,4 @@ The Graphing Calculator uses the Dijkstra-Parser to calculate the graphs. Multip
    LICENSE & COPYRIGHT:
    
    This project is Copyrighted by it's author Lowell Stadelman.
-   It is unrestricted, and free to use distribute and modify as needed. 
+   It is unrestricted, and free to use distribute and modify as needed under the condition that this copywrite is included in the header of the file. 
