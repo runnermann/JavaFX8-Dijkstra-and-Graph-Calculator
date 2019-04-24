@@ -1,6 +1,6 @@
 # JavaFX8-Dijkstra-and-Graph-Calculator
 
-![Picture](./iooily_flashmonkey_logo.png)
+![iOOily FlashMonkey logo](./flashmonkey_logo.png)
 
 - This calculator is a simplified version from a recent project. It provides feedback to the user to help them with understanding where they've made errors in hand calculations of polynomials. After the polynomial is entered into the "problem" text-field, the user then enters the correct answer into the "answer" text-field. If the user has entered an incorrect answer, a drop-down list is displayed with the operators and coefficients in the order they were calculated in. The user can hover over the drop-down list and the operator in the original polynomail will be highlighted with a circle displayed above the operator. The user may then check their calculations for common errors such as calculations with the operator sequence or failing to change/carry the signs.  
 
